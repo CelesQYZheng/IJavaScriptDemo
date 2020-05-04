@@ -26,10 +26,26 @@ namespace IJavaScriptDemo
             Thread.Sleep(2000);
 
             // go to contact page
-            driver.FindElement(By.XPath("/html/body/div[2]/div/div/div/div/div/div[2]/div[1]/nav/ul/li[5]/a/span")).Click();
-
+            driver.FindElement(By.LinkText("Contact")).Click();
+            // refresh the page
             ((IJavaScriptExecutor)driver).ExecuteScript("history.go(0)");
+
             Thread.Sleep(2000);
+        }
+
+        [TestMethod]
+        public void JavascriptChechboxDemo()
+        {
+            IWebDriver driver = new FirefoxDriver();
+            driver.Url = "http://uitestpractice.com/Students/Form";
+            Thread.Sleep(2000);
+
+            // check checkbox
+            ((IJavaScriptExecutor)driver).ExecuteScript("document.querySelectorAll('input[value=read]')[0].click()");
+            Thread.Sleep(2000);
+
+            driver.Quit();
+
         }
     }
 }
