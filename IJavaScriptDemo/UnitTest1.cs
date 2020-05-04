@@ -43,9 +43,24 @@ namespace IJavaScriptDemo
             // check checkbox
             ((IJavaScriptExecutor)driver).ExecuteScript("document.querySelectorAll('input[value=read]')[0].click()");
             Thread.Sleep(2000);
+            // uncheck the box 
+            ((IJavaScriptExecutor)driver).ExecuteScript("document.querySelector('input[value=read]').click()");
+            Thread.Sleep(2000);
 
             driver.Quit();
 
+        }
+
+        [TestMethod]
+        public void JavaScriptGetInnerText()
+        {
+            IWebDriver driver = new FirefoxDriver();
+            driver.Url = "https://techexpozed.co.nz";
+            Thread.Sleep(2000);
+
+            var innertext = ((IJavaScriptExecutor)driver).ExecuteScript("return document.documentElement.innerText;").ToString();
+            Console.WriteLine(innertext);
+            Thread.Sleep(2000);
         }
     }
 }
