@@ -106,5 +106,23 @@ namespace IJavaScriptDemo
             Thread.Sleep(2000);
             driver.Quit();
         }
+
+        [TestMethod]
+        public void JavaScriptScrollThePage()
+        {
+            IWebDriver driver = new FirefoxDriver();
+            // nevigate to the page
+            driver.Url = "https://techexpozed.co.nz";
+            Thread.Sleep(2000);
+            // scroll down the page
+            ((IJavaScriptExecutor)driver).ExecuteScript("window.scrollBy(0, 1000)");
+            Thread.Sleep(2000);
+            // scroll up
+            ((IJavaScriptExecutor)driver).ExecuteScript("window.scrollBy(0, -1000)");
+            Thread.Sleep(2000);
+            // scroll to the end
+            ((IJavaScriptExecutor)driver).ExecuteScript("window.scrollBy(0, document.body.scrollHeight)");
+            driver.Quit();
+        }
     }
 }
