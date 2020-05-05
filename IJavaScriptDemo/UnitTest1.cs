@@ -62,5 +62,19 @@ namespace IJavaScriptDemo
             Console.WriteLine(innertext);
             Thread.Sleep(2000);
         }
+
+        [TestMethod]
+        public void JavaScriptGetTheTitle()
+        {
+            IWebDriver driver = new FirefoxDriver();
+            driver.Url = "https://techexpozed.co.nz";
+            Thread.Sleep(2000);
+
+            var title = ((IJavaScriptExecutor)driver).ExecuteScript("return document.title;").ToString();
+
+            Console.WriteLine(title);
+            Thread.Sleep(2000);
+            driver.Quit();
+        }
     }
 }
