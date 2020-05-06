@@ -34,7 +34,7 @@ namespace IJavaScriptDemo
         }
 
         [TestMethod]
-        public void JavascriptChechboxDemo()
+        public void JavascriptCheckboxDemo()
         {
             IWebDriver driver = new FirefoxDriver();
             driver.Url = "http://uitestpractice.com/Students/Form";
