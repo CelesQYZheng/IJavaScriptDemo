@@ -124,5 +124,79 @@ namespace IJavaScriptDemo
             ((IJavaScriptExecutor)driver).ExecuteScript("window.scrollBy(0, document.body.scrollHeight)");
             driver.Quit();
         }
+
+        [TestMethod]
+        public void JavaScriptNavigateToOtherpage()
+        {
+            IWebDriver driver = new FirefoxDriver();
+            // nevigate to the page
+            driver.Url = "https://techexpozed.co.nz";
+            Thread.Sleep(2000);
+            ((IJavaScriptExecutor)driver).ExecuteScript("window.location ='https://google.com';");
+            Thread.Sleep(2000);
+            driver.Quit();
+        }
+
+        [TestMethod]
+        public void JavaScriptGettheSizeofPage()
+        {
+            IWebDriver driver = new FirefoxDriver();
+            // nevigate to the page
+            driver.Url = "https://techexpozed.co.nz";
+            Thread.Sleep(2000);
+            var pwidth = ((IJavaScriptExecutor)driver).ExecuteScript("return window.innerWidth;").ToString();
+            var pheight = ((IJavaScriptExecutor)driver).ExecuteScript("return window.innerHeight;").ToString();
+            Console.WriteLine(pwidth);
+            Console.WriteLine(pheight);
+            Thread.Sleep(2000);
+            driver.Quit();
+        }
+
+        [TestMethod]
+        public void JavaScriptInsertTextInput()
+        {
+            IWebDriver driver = new FirefoxDriver();
+            // nevigate to the page
+            driver.Url = "https://techexpozed.co.nz/contact-us.php";
+            driver.Manage().Window.FullScreen();
+            Thread.Sleep(2000);
+            ((IJavaScriptExecutor)driver).ExecuteScript("document.getElementById('name').value ='Jane Perez';");
+            ((IJavaScriptExecutor)driver).ExecuteScript("document.getElementById('email').value ='perezmail@mail.com';");
+
+            
+            driver.Quit();
+        }
+
+        [TestMethod]
+        public void JavaScriptHandleAlert()
+        {
+            IWebDriver driver = new FirefoxDriver();
+            // nevigate to the page
+            driver.Url = "http://uitestpractice.com/Students/Switchto";
+
+            //driver.FindElement(By.Id("alert")).Click();
+
+            //Thread.Sleep(2000);
+
+            //var s1 = driver.SwitchTo().Alert().Text;
+            //Thread.Sleep(2000);
+            //Console.WriteLine(s1);
+            //driver.SwitchTo().Alert().Accept();
+
+
+            //driver.FindElement(By.Id("prompt")).Click();
+            //driver.SwitchTo().Alert().SendKeys("selenium");
+            //Thread.Sleep(2000);
+            //driver.SwitchTo().Alert().Accept(); //accepts the alert window
+            ////driver.SwitchTo().Alert().Dismiss();  //cancels the alert window
+            ///
+            driver.FindElement(By.Id("confirm")).Click();
+            var s1 = driver.SwitchTo().Alert().Text;
+            Console.WriteLine(s1);
+            driver.SwitchTo().Alert().Accept();
+            Thread.Sleep(2000);
+            driver.Quit();
+        }
     }
+
 }
