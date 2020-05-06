@@ -175,7 +175,6 @@ namespace IJavaScriptDemo
             driver.Url = "http://uitestpractice.com/Students/Switchto";
 
             //driver.FindElement(By.Id("alert")).Click();
-
             //Thread.Sleep(2000);
 
             //var s1 = driver.SwitchTo().Alert().Text;
@@ -189,7 +188,7 @@ namespace IJavaScriptDemo
             //Thread.Sleep(2000);
             //driver.SwitchTo().Alert().Accept(); //accepts the alert window
             ////driver.SwitchTo().Alert().Dismiss();  //cancels the alert window
-            ///
+            //
             driver.FindElement(By.Id("confirm")).Click();
             var s1 = driver.SwitchTo().Alert().Text;
             Console.WriteLine(s1);
